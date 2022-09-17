@@ -6,9 +6,7 @@ import cors from 'cors'
 
 const app = express()
 app.use(express.json())
-app.use(cors({
-    // origin: 'http://rocketseat.com.br' <-Exemplo de "Limitador de requisições" para somente esse dominio
-}))
+app.use(cors()) // {origin: 'http://rocketseat.com.br'} <-Exemplo de "Limitador de requisições" para somente esse dominio
 
 const prisma = new PrismaClient({
     log: ['query'] //remover posteriormente
