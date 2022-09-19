@@ -1,10 +1,12 @@
 import express from 'express'
 import { PrismaClient } from '@prisma/client';
-import { convertHourStringToMinutes } from './utils/convert-hour-string-to-minutes';
-import { convertMinutesToHourString } from './utils/convert-minutes-to-hour-string';
 import cors from 'cors'
 
+import { convertHourStringToMinutes } from './utils/convert-hour-string-to-minutes';
+import { convertMinutesToHourString } from './utils/convert-minutes-to-hour-string';
+
 const app = express()
+
 app.use(express.json())
 app.use(cors()) // {origin: 'http://rocketseat.com.br'} <-Exemplo de "Limitador de requisições" para somente esse dominio
 
@@ -24,6 +26,7 @@ app.get('/games', async (request, response) => {
     })
     return response.json(games);
 });
+
 app.post('/games/:id/ads', async (request, response) => {
     const { id } = request.params;
     const body = request.body;
@@ -43,6 +46,7 @@ app.post('/games/:id/ads', async (request, response) => {
 
     return response.status(201).json(ad);
 });
+
 app.get('/games/:id/ads', async (request, response) => {
     const gameId = request.params.id;
 
@@ -72,6 +76,7 @@ app.get('/games/:id/ads', async (request, response) => {
         }
     }))
 })
+
 app.get('/ads/:id/discord', async (request, response) => {
     const adId = request.params.id;
     const ad = await prisma.ad.findUniqueOrThrow({
@@ -87,4 +92,5 @@ app.get('/ads/:id/discord', async (request, response) => {
         discord: ad.discord
     })
 })
+
 app.listen(8000)

@@ -6,9 +6,11 @@ interface GameBannerProps {
 
 export function GameBanner(props: GameBannerProps) {
     let adText = 'Sem anúncios'
+
     if (props.adsCount != 0) {
         adText = props.adsCount > 1 ? 'anúncios' : 'anúncio'
     }
+
     return (
         <a href="" className="relative rounded-lg overflow-hidden">
             <img src={props.bannerUrl} alt="" />

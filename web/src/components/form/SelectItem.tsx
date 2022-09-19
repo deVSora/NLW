@@ -1,6 +1,5 @@
 import * as Select from '@radix-ui/react-select'
 import { SelectItemProps } from '@radix-ui/react-select'
-import { ProjectorScreen } from 'phosphor-react';
 
 interface Props extends SelectItemProps {
     text: string
@@ -12,6 +11,7 @@ export function SelectItem(props: Props) {
             <Select.ItemText >
                 {props.text}
             </Select.ItemText >
+
             <Select.ItemIndicator />
         </Select.Item>
     )
